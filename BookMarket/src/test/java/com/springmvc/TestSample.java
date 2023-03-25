@@ -36,7 +36,7 @@ public class TestSample {
 	@BeforeEach
 	public void setup(){
 		this.mockMvc = MockMvcBuilders.webAppContextSetup( context )
-//				.addFilter( new CharacterEncodingFilter( "UTF-8", Boolean.TRUE ) )
+				.addFilter( new CharacterEncodingFilter( "UTF-8", Boolean.TRUE ) )
 				.build();
 	}
 
