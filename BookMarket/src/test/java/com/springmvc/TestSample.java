@@ -1,9 +1,8 @@
 package com.springmvc;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.springmvc.domain.Book;
+import com.springmvc.repository.BookRepository;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -32,6 +31,9 @@ public class TestSample {
 	@Autowired
 	private WebApplicationContext context;
 
+	@Autowired
+	private BookRepository bookRepository;
+
 
 	@BeforeEach
 	public void setup(){
@@ -57,4 +59,26 @@ public class TestSample {
 				.andExpect( status().isOk() )
 				.andDo( print() ).andReturn().getResponse();
 	}
+
+
+	@Test
+	@DisplayName( "인터페이스 테스트 메서드" )
+	@Disabled
+	void interfaceTest() {
+
+		Book book = new Book();
+		book.setBookId( "ISBN1234" );
+		book.setAuthor("박용준");
+		book.setUnitsInStock( 1000 );
+		book.setReleaseDate( "2020-05-29" );
+		book.setCategory( "IT전문서" );
+		book.setPublisher( "길벗" );
+		book.setDescription( "샘플입니다.1" );
+
+		bookRepository.addBook( book );
+
+		Assertions.assertEquals( null, bookRepository.getAllBookList() );
+	}
+
+
 }
