@@ -3,15 +3,23 @@ package com.springmvc.service;
 import com.springmvc.domain.Book;
 import com.springmvc.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BookService {
 
 	private final BookRepository bookRepository;
+
+	private final RestTemplate restTemplate;
+
 
 	public List<Book> getAllBookList() {
 		Book book = new Book();
@@ -23,6 +31,10 @@ public class BookService {
 		book.setPublisher( "길벗" );
 		book.setDescription( "샘플입니다.1" );
 		bookRepository.addBook( book );
+		SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = restTemplate.getInterceptors().g;
+		log.info( "Info:", simpleClientHttpRequestFactory );
+
+
 		return bookRepository.getAllBookList();
 	}
 }
