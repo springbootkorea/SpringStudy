@@ -166,14 +166,14 @@
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <configuration>
-                    <mainClass>org.test.int1.Main</mainClass>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <artifactId>exec-maven-plugin</artifactId>-->
+<!--                <version>1.2.1</version>-->
+<!--                <configuration>-->
+<!--                    <mainClass>org.test.int1.Main</mainClass>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
 		<finalName>${project.artifactId}</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -183,7 +183,7 @@
 				<filtering>true</filtering>
 			</resource>
 			<resource>
-				<directory>src/main/resources-${active}</directory>
+				<directory>src/main/resources-${spring.profiles.active}</directory>
 			</resource>
 		</resources>
     </build>

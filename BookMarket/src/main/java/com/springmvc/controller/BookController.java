@@ -22,6 +22,7 @@ public class BookController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject( "bookList", bookService.getAllBookList() );
 		mv.setViewName( "/books/list" );
+		log.info( "한글" );
 		return mv;
 	}
 }

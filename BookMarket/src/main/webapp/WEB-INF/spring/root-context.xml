@@ -4,5 +4,19 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" scope="prototype">
+		<property name="requestFactory">
+			<bean class="org.springframework.http.client.SimpleClientHttpRequestFactory">
+				<property name="connectTimeout" value="5000" />
+				<property name="readTimeout" value="5000" />
+			</bean>
+		</property>
+		<property name="messageConverters">
+			<list>
+<!--				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />-->
+				<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+			</list>
+		</property>
+	</bean>
 </beans>
