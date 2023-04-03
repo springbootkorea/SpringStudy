@@ -1,25 +1,9 @@
 <!DOCTYPE html>
-<!-- thymelead 불러오기 -->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
-	<title>테스트</title>
-</head>
-<body>
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-	<div class="container">
-		<a class="navbar-brand" href="/home">Home</a>
-	</div>
-</nav>
-<div class="jumbotron">
-	<div class="text-center">
-		<h1 class="display-3">도서 목록</h1>
-	</div>
-</div>
-<div class="container">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+
+<div class="container" layout:fragment="content">
 	<div class="row" text-align="center">
 		<div class="col-md-4" th:each="books : ${bookList}">
 			<h3 th:text="${books.bookId}"></h3>
@@ -27,9 +11,4 @@
 		</div>
 	</div>
 </div>
-<footer class="container">
-	<hr>
-	<p>&copy; WebMarket</p>
-</footer>
-</body>
 </html>

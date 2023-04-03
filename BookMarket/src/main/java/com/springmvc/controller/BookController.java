@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import com.springmvc.domain.Book;
 import com.springmvc.service.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,14 @@ public class BookController {
 		mv.addObject( "bookList", bookService.getAllBookList() );
 		mv.setViewName( "/books/list" );
 		log.info( "한글" );
+		return mv;
+	}
+
+	@GetMapping( "/register")
+	public ModelAndView registerBookForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject( "book", new Book() );
+		mv.setViewName( "/books/register" );
 		return mv;
 	}
 }

@@ -27,6 +27,11 @@
 
 	<beans:bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
 		<beans:property name="templateResolver" ref="templateResolver" />
+		<beans:property name="additionalDialects">
+			<beans:set>
+				<beans:bean class="nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect" />
+			</beans:set>
+		</beans:property>
 	</beans:bean>
 
 	<beans:bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">

@@ -4,11 +4,6 @@ import com.springmvc.domain.Book;
 import com.springmvc.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-<<<<<<< HEAD
-=======
-import org.springframework.http.client.ClientHttpRequestFactory;
->>>>>>> b0e804e2323fe72f6527695e090e28c08065fd63
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
