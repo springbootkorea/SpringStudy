@@ -20,7 +20,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".html" />
 		<beans:property name="templateMode" value="HTML" />
-		<beans:property name="cacheable" value="true" />
+		<beans:property name="cacheable" value="false" />
 		<beans:property name="order" value="1" />
 		<beans:property name="characterEncoding" value="UTF-8" />
 	</beans:bean>
