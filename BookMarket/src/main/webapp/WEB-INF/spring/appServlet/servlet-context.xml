@@ -39,5 +39,51 @@
 		<beans:property name="characterEncoding" value="UTF-8" />
 	</beans:bean>
 
+	<beans:beans profile="local">
+		<beans:bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+			<beans:property name="poolName" value="testPool"/>
+			<beans:property name="maximumPoolSize" value="100"/>
+			<beans:property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<beans:property name="jdbcUrl" value="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=SpringStudy;encrypt=true;trustServerCertificate=true" />
+			<beans:property name="username" value="sa" />
+			<beans:property name="password" value="1234" />
+		</beans:bean>
+	</beans:beans>
+
+	<beans:beans profile="dev">
+		<beans:bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+			<beans:property name="poolName" value="testPool"/>
+			<beans:property name="maximumPoolSize" value="100"/>
+			<beans:property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<beans:property name="jdbcUrl" value="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=SpringStudy;encrypt=true;trustServerCertificate=true" />
+			<beans:property name="username" value="sa" />
+			<beans:property name="password" value="1234" />
+		</beans:bean>
+		<beans:bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource" destroy-method="close">
+			<beans:constructor-arg ref="hikariConfig"/>
+		</beans:bean>
+		<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<beans:property name="dataSource" ref="dataSource"/>
+		</beans:bean>
+	</beans:beans>
+
+	<beans:beans profile="real">
+		<beans:bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+			<beans:property name="poolName" value="testPool"/>
+			<beans:property name="maximumPoolSize" value="100"/>
+			<beans:property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<beans:property name="jdbcUrl" value="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=SpringStudy;encrypt=true;trustServerCertificate=true" />
+			<beans:property name="username" value="sa" />
+			<beans:property name="password" value="1234" />
+		</beans:bean>
+		<beans:bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource" destroy-method="close">
+			<beans:constructor-arg ref="hikariConfig"/>
+		</beans:bean>
+		<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<beans:property name="dataSource" ref="dataSource"/>
+		</beans:bean>
+	</beans:beans>
+
+
 	<context:component-scan base-package="com.springmvc.*" />
 </beans:beans>

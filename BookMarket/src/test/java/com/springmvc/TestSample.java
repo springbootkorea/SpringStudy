@@ -15,6 +15,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
+import javax.sql.DataSource;
+
+import java.sql.Connection;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -33,6 +37,9 @@ public class TestSample {
 
 	@Autowired
 	private BookRepository bookRepository;
+
+	@Autowired
+	private DataSource dataSource;
 
 
 	@BeforeEach
@@ -78,6 +85,15 @@ public class TestSample {
 		bookRepository.addBook( book );
 
 		Assertions.assertEquals( null, bookRepository.getAllBookList() );
+	}
+	
+	@Test
+	@DisplayName( "DB연결 테스트 메서드" )
+	void dbConnectTest() {
+		try( Connection con = dataSource.getConnection() ) {
+			Assertions.assertEquals( null, con );
+		} catch ( Exception e ) {
+		}
 	}
 
 
